@@ -930,5 +930,9 @@ ul{
 	div#page {
 		width: 100%;
 	}
+
+	#hlavni_header{
+		display: none;
+	}
 }
 

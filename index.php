@@ -234,7 +234,7 @@ if (IsSet($_GET["akce"]) or IsSet($_GET["stranka"])){
 else{
     $zobrazit_reklamu = 0;
     ?>    
-    <img src='images/navtype_main.gif' class='' alt='' /><br />    
+    <img id = 'hlavni_header' src='images/navtype_main.gif' class='' alt='' /><br />    
     <div id='page'>    
     <div id='zarovnani'>    
     <?php
