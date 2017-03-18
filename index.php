@@ -13,6 +13,8 @@
     enable_page_level_ads: true
   });
 </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <meta http-equiv="Content-language" content="cs" /> 
         <meta property="fb:admins" content="1440727879" />                 
         <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />                            
@@ -309,11 +311,9 @@ if ($zobrazit_reklamu == 1){
     ?>                  
     <img src="images/dotted_line.gif" class="dotline" alt="" /><br />                   
     <div id="footer">                         
-    <span class="footext">          Kopírovat obsah stránek, čí s ním jinak manipulovat bez svolení jeho autora, je zakázáno.<br />          XHTML 1.0 VALID, CSS VALID, RSS 2.0 VALID, Hosting zajišťuje                      
-    <a href='mailto:martin@vaner.eu'>Martin Vaner</a>.                          
-    </span>        <br />       ISSN: 1803-7615 &copy; maths.cz 2008-2016 &copy; content:                  
+    <span class="footext">          Kopírovat obsah stránek, čí s ním jinak manipulovat bez svolení jeho autora, je zakázáno.<br /> 
+    </span>        <br />       ISSN: 1803-7615 &copy; maths.cz 2008-2017 &copy; content:                  
     <a href='http://maths.cz/redaktor/jakub-vojacek.html'>Jakub Vojáček</a>; design:                  
-    <a href='http://autori.programujte.com/nefaritus/'>Tomáš Bobek</a>
     
     <script src="http://c1.navrcholu.cz/code?site=130443;t=b14" type="text/javascript"></script><noscript><div><a href="http://navrcholu.cz/"><img src="http://c1.navrcholu.cz/hit?site=130443;t=b14;ref=;jss=0" width="14" height="14" alt="NAVRCHOLU.cz" style="border:none" /></a></div></noscript>                <br />
     
