@@ -913,7 +913,7 @@ ul{
 
 
 
-
+/*
 @media (max-width: 991px){
 	#zarovnani {
 		width: 100%;
@@ -934,5 +934,6 @@ ul{
 	#hlavni_header{
 		display: none;
 	}
+	*/
 }
 
