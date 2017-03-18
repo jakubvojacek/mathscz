@@ -1,0 +1,65 @@
+\select@language {czech}
+\select@language {czech}
+\select@language {czech}
+\contentsline {subsection}{Odkaz na tuto pr{\' a}ci}{viii}{section*.1}
+\contentsline {chapter}{{\' U}vod}{1}{chapter*.5}
+\contentsline {section}{Rozbor zad\IeC {\'a}n\IeC {\'\i }}{2}{section*.6}
+\contentsline {section}{Profil spole\IeC {\v c}nosti SVM~Microwaves~s.~r.~o.}{3}{section*.7}
+\contentsline {chapter}{\chapternumberline {1}Anal\IeC {\'y}za}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Sou\IeC {\v c}asn\IeC {\'y} stav}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}Produkty SVM}{6}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Spoj}{6}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Ant\IeC {\'e}na}{6}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Komponenta}{7}{subsection.1.2.3}
+\contentsline {section}{\numberline {1.3}Funk\IeC {\v c}n\IeC {\'\i } po\IeC {\v z}adavky}{7}{section.1.3}
+\contentsline {section}{\numberline {1.4}Nefunk\IeC {\v c}n\IeC {\'\i } po\IeC {\v z}adavky}{10}{section.1.4}
+\contentsline {section}{\numberline {1.5}Funk\IeC {\v c}n\IeC {\'\i } po\IeC {\v z}adavky na komunika\IeC {\v c}n\IeC {\'\i } protokol}{10}{section.1.5}
+\contentsline {section}{\numberline {1.6}P\IeC {\v r}\IeC {\'\i }pady u\IeC {\v z}it\IeC {\'\i }}{11}{section.1.6}
+\contentsline {chapter}{\chapternumberline {2}N\IeC {\'a}vrh}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Architektura}{13}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}MVC}{14}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}MVP}{14}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Pou\IeC {\v z}it\IeC {\'e} technologie}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Nette}{15}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Doctrine 2}{16}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Grido}{17}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Twitter Bootstrap}{17}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Twitter Bootstrap form render}{18}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}JSON}{18}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}GIT}{19}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Composer}{20}{subsection.2.2.8}
+\contentsline {section}{\numberline {2.3}N\IeC {\'a}vrh u\IeC {\v z}ivatelsk\IeC {\'e}ho rozhran\IeC {\'\i }}{20}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Wireframe}{21}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}U\IeC {\v z}ivatelsk\IeC {\'a} pr\IeC {\'a}va}{23}{section.2.4}
+\contentsline {section}{\numberline {2.5}Dom\IeC {\'e}nov\IeC {\'y} n\IeC {\'a}vrh}{24}{section.2.5}
+\contentsline {section}{\numberline {2.6}Komunika\IeC {\v c}n\IeC {\'\i } protokol}{25}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Intervaly synchronizace}{26}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Sd\IeC {\'\i }len\IeC {\'\i } identifika\IeC {\v c}n\IeC {\'\i }ch \IeC {\v c}\IeC {\'\i }sel}{26}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Popis entity RequestFile}{28}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}Popis entity Request}{28}{subsection.2.6.4}
+\contentsline {subsection}{\numberline {2.6.5}Popis entity ChangeRequest}{29}{subsection.2.6.5}
+\contentsline {subsection}{\numberline {2.6.6}Typy ChangeRequest\IeC {\r u}}{30}{subsection.2.6.6}
+\contentsline {section}{\numberline {2.7}API pro komunikaci s~ostan\IeC {\'\i }mi moduly}{32}{section.2.7}
+\contentsline {chapter}{\chapternumberline {3}Implementace}{35}{chapter.3}
+\contentsline {section}{\numberline {3.1}Presenter}{35}{section.3.1}
+\contentsline {section}{\numberline {3.2}\IeC {\'U}pravy ACL}{36}{section.3.2}
+\contentsline {section}{\numberline {3.3}Synchronizace u\IeC {\v z}ivatelsk\IeC {\'y}ch \IeC {\'u}\IeC {\v c}t\IeC {\r u} mezi SVM a QumJup}{36}{section.3.3}
+\contentsline {section}{\numberline {3.4}Zabezpe\IeC {\v c}en\IeC {\'\i }}{38}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Postup ukl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } hesla}{38}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Cross site scripting}{39}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Cross-Site Request Forgery}{39}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}URL manipulation}{39}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Console commands}{40}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}www/index.php orm:full}{41}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}www/index.php req:sync}{41}{subsection.3.5.2}
+\contentsline {section}{\numberline {3.6}Instalace}{41}{section.3.6}
+\contentsline {chapter}{\chapternumberline {4}Testov\IeC {\'a}n\IeC {\'\i }}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}Testov\IeC {\'a}n\IeC {\'\i } u\IeC {\v z}ivatelsk\IeC {\'e}ho rozhran\IeC {\'\i }}{43}{section.4.1}
+\contentsline {section}{\numberline {4.2}Testov\IeC {\'a}n\IeC {\'\i } kompatibility v~r\IeC {\r u}zn\IeC {\'y}ch webov\IeC {\'y}ch prohl\IeC {\'\i }\IeC {\v z}e\IeC {\v c}\IeC {\'\i }ch}{43}{section.4.2}
+\contentsline {section}{\numberline {4.3}Integra\IeC {\v c}n\IeC {\'\i } testov\IeC {\'a}n\IeC {\'\i }}{45}{section.4.3}
+\contentsline {section}{\numberline {4.4}Akcepta\IeC {\v c}n\IeC {\'\i } testy}{45}{section.4.4}
+\contentsline {chapter}{Z{\' a}v{\v e}r}{47}{chapter*.8}
+\contentsline {section}{Kontrola spln\IeC {\v e}n\IeC {\'\i } zad\IeC {\'a}n\IeC {\'\i }}{48}{section*.9}
+\contentsline {chapter}{Literatura}{51}{section*.11}
+\contentsline {appendix}{\chapternumberline {A}Seznam pou\IeC {\v z}it\IeC {\'y}ch zkratek}{53}{appendix.A}
+\contentsline {appendix}{\chapternumberline {B}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho CD}{55}{appendix.B}

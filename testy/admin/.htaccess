@@ -1,0 +1,6 @@
+
+
+AuthUserFile /var/www/web176/web/pai/admin/.htpasswd
+AuthName "přístup"
+AuthType Basic
+require valid-user
