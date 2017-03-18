@@ -270,6 +270,7 @@ function _datum($r){
     }
 function ukaz_clanek($v){
     ?>
+    <article>
     <h1 style = 'margin-top: 5px; margin-bottom: 0px;'><a class='nadpis' href='clanky/<?php echo $v["link"]; ?>'><?php echo $v["jmeno_clanku"]; ?></a></h1>
     <span class="info">Vydáno dne <?php echo _datum($v["datum_clanku"]); ?> v kategorii <a href='mapa-webu/<?php echo $v["link_kategorie"]; ?>'><?php echo $v["jmeno_kategorie"]; ?></a>;
     Autor: <a href='redaktor/<?php echo $v["link_autora"]; ?>'><?php echo $v["jmeno_autora"]; ?></a>;

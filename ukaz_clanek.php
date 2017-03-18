@@ -90,7 +90,7 @@ if (IsSet($_GET["id"])){
     <span class='authorname'><a href='redaktor/<?php echo $pole["link_autora"]; ?>'><?php echo $pole["jmeno_autora"]; ?></a></span>
     <br />
     <br />
-    
+    </article>
     <?php
     ?>
     <br /><br />
