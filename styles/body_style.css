@@ -910,3 +910,25 @@ ul{
     list-style-image: url('../images/odrazka.bmp');
     }    
 
+
+
+
+
+@media (max-width: 991px){
+	#zarovnani {
+		width: 100%;
+	}
+
+	div#container {
+		width: 100%;
+	}
+
+	div#header {
+		width: 100%;
+	}
+
+	div#page {
+		width: 100%;
+	}
+}
+
