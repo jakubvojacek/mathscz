@@ -141,7 +141,6 @@ function vrat_math($re){
         mysql_query("insert into tex(jmeno, obr) values('$my_adresa', '$blob')") or die(mysql_error());        
         }
     $vypis = mysql_query("select id from tex where jmeno = '$my_adresa'");
-    $vypis = mysql_query("UPDATE tex set new_name = '" . mysql_escape_string($my_adresa) . "' where jmeno = '$my_adresa'");
     $vypis = mysql_fetch_array($vypis);
     $id = $vypis["id"];
     return "<img style ='vertical-align: center; margin:2px;margin-bottom:0px;' src='get_math.php?id=$id' alt='$adresa' />";
