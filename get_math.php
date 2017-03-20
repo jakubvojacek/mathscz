@@ -22,7 +22,6 @@ $s=$_SERVER["SERVER_NAME"];
 
 
 
-      $db=mysql_select_db("maths.cz",$connect) or die('Nepodaøilo se pøipojit k databázi');
 
       mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
 
