@@ -5,9 +5,6 @@
 $s=$_SERVER["SERVER_NAME"];
 
 
-      $connect=mysql_connect("localhost","maths.cz","Kar4P4JvdwqeeYEC");
-
-      $db=mysql_select_db("maths.cz",$connect) or die('Nepodaøilo se pøipojit k databázi');
 
       mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
 
