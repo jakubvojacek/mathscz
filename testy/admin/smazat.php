@@ -3,13 +3,13 @@ include("../pripojeni.php");
 
 class Smaz{
     function smaz_otazku($id){
-        mysql_query("delete from vysledky where otazka='$id'") or die(mysql_error());
-        mysql_query("delete from odpovedi where otazka='$id'") or die(mysql_error());
-        mysql_query("delete from otazky where id = '$id'") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "delete from vysledky where otazka='$id'") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "delete from odpovedi where otazka='$id'") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "delete from otazky where id = '$id'") or die(mysql_error());
         Header("Location: index.php?akce=otazky");
         }
     function smaz_chybu($otazka){
-        mysql_query("delete from chyby where otazka='$otazka'");
+        mysqli_query(DATABASE::getDb(), "delete from chyby where otazka='$otazka'");
         Header("Location: index.php?akce=chyby");
     }
     function smaz(){

@@ -1,8 +1,8 @@
 <?php
 include("./kontrola.php");   
 @session_start();
-$v = mysql_query("select * from nastaveni where id = '1'");
-$v = mysql_fetch_array($v);
+$v = mysqli_query(DATABASE::getDb(), "select * from nastaveni where id = '1'");
+$v = mysqli_fetch_array($v);
 if (skupina != 0){
     ?><p>Do této kategorie nemáte přístup</p><?php
     return;    

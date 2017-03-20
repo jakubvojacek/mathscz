@@ -16,10 +16,10 @@ include("./funkce/pripojeni.php");
     <copyright><?php echo copyright;?></copyright>
 <?php 
 
-$vysledek = mysql_query("select *, clanky.link as link_clanku, uzivatele.nick as jmeno_autora from clanky left join uzivatele on uzivatele.id=clanky.autor where dokoncen = 'ano' ORDER BY clanky.datum DESC LIMIT 10") or die(mysql_error());
+$vysledek = mysqli_query(DATABASE::getDb(), "select *, clanky.link as link_clanku, uzivatele.nick as jmeno_autora from clanky left join uzivatele on uzivatele.id=clanky.autor where dokoncen = 'ano' ORDER BY clanky.datum DESC LIMIT 10") or die(mysql_error());
 
 
-while ($v = mysql_fetch_array($vysledek) ){
+while ($v = mysqli_fetch_array($vysledek) ){
     ?>
     <item>
         <title><?php echo $v["jmeno"];?></title>

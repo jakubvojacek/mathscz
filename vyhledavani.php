@@ -78,15 +78,15 @@ $vypis = "
         + 5*MATCH(clanky.uvod) AGAINST ('$hledej' IN BOOLEAN MODE)+ MATCH(clanky.text) AGAINST ('$hledej' IN BOOLEAN MODE) 
         DESC
       ";
-$vypis = mysql_query($vypis) or die(mysql_error());
-if (mysql_num_rows($vypis) == 0){
+$vypis = mysqli_query(DATABASE::getDb(), $vypis) or die(mysql_error());
+if (mysqli_num_rows($vypis) == 0){
     ?><p>Omlouváme se, ale na váš předmět vyhledávání - <strong><?php echo $hledej; ?></strong> - nebyla nalezena žádná odpovídající stránka.</p><?php
     }
 else{   
-    ?><p>Nalezeno <?php echo mysql_num_rows($vypis); ?> záznamů</p><?php
+    ?><p>Nalezeno <?php echo mysqli_num_rows($vypis); ?> záznamů</p><?php
     }
-while($vysledek = mysql_fetch_array($vypis)){
-    $v = mysql_fetch_array(mysql_query("select count(*) as pocet from komentare where clanek = '".$vysledek["id_clanku"]."'"));
+while($vysledek = mysqli_fetch_array($vypis)){
+    $v = mysqli_fetch_array(mysqli_query(DATABASE::getDb(), "select count(*) as pocet from komentare where clanek = '".$vysledek["id_clanku"]."'"));
     $vysledek["pocet_komentaru"] = $v["pocet"];
     ukaz_clanek($vysledek);
     }

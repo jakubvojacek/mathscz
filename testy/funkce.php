@@ -7,8 +7,8 @@ function vrat_math($re){
     $adresa = $re[1];
     $adresa2 = $adresa;
     $my_adresa = HTMLSpecialChars($adresa, ENT_QUOTES);
-    $vypis = mysql_query("select * from tex where jmeno = '$my_adresa'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select * from tex where jmeno = '$my_adresa'");
+    if (mysqli_num_rows($vypis) == 0){
 
 
         $arr = split(" ", $adresa2);
@@ -23,10 +23,10 @@ function vrat_math($re){
         $blob=file_get_contents("http://www.matweb.cz/cgi-bin/mimetex.cgi?$adresa2");
         //$blob=file_get_contents("http://www.quantnet.com/cgi-bin/mathtex.cgi?$adresa2");
         $blob = base64_encode($blob);
-        mysql_query("insert into tex(jmeno, obr) values('$my_adresa', '$blob')") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "insert into tex(jmeno, obr) values('$my_adresa', '$blob')") or die(mysql_error());
         }
-    $vypis = mysql_query("select id from tex where jmeno = '$my_adresa'");
-    $vypis = mysql_fetch_array($vypis);
+    $vypis = mysqli_query(DATABASE::getDb(), "select id from tex where jmeno = '$my_adresa'");
+    $vypis = mysqli_fetch_array($vypis);
     $id = $vypis["id"];
     return "<img style ='vertical-align: center; margin:2px;margin-bottom:0px;' src='get_math.php?id=$id' alt='$adresa' />";
     }
@@ -72,8 +72,8 @@ abstract class Funkce{
             $odpoved = 1;
             }
 
-        $q = mysql_query("select spravne, odpoved from odpovedi where id = '$id'") or die(mysql_error());
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select spravne, odpoved from odpovedi where id = '$id'") or die(mysql_error());
+        $v = mysqli_fetch_array($q);
         if (Trim($v["odpoved"]) == ""){
             return 1;
 
@@ -110,8 +110,8 @@ abstract class Funkce{
         $this->reklama();
         ?><p style="margin-top: 35px; font-size: 2em; font-weight: bold; width: 100%; border-bottom: 1px solid#000; ">Oprava</p><?php
         $otazka = $_POST["otazka"];
-        $q = mysql_query("select otazka, reseni from otazky where id = '$otazka'");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select otazka, reseni from otazky where id = '$otazka'");
+        $v = mysqli_fetch_array($q);
         ?><p><span class="otazka"><?php echo $this->znacky($v["otazka"]); ?></span></p>
         <table style="margin-bottom: 10px; ">
         <?php
@@ -144,10 +144,10 @@ abstract class Funkce{
             $spatne[] = $otazka;
             $_SESSION["otazky"] = $spatne;
             $_SESSION["spatne"] = $_SESSION["spatne"] + 1;
-            mysql_query("update otazky set spatne = spatne + 1 where id = '$otazka'") or die(mysql_error());
+            mysqli_query(DATABASE::getDb(), "update otazky set spatne = spatne + 1 where id = '$otazka'") or die(mysql_error());
             }
         $_SESSION["pocet"] = $_SESSION["pocet"] + 1;
-        mysql_query("update otazky set celkem = celkem + 1 where id = '$otazka'") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "update otazky set celkem = celkem + 1 where id = '$otazka'") or die(mysql_error());
         $id_uzivatele  = $this->je_prihlasen();
         if ($id_uzivatele == -1){//kvuli unsigned intu u uzivatele v tabuůce
             $id_uzivatele = 0;
@@ -160,7 +160,7 @@ abstract class Funkce{
         /*
          * chyba = 1 -> spatna odpoved
          */
-        mysql_query("insert into vysledky(spravne, spatne, uzivatel, otazka, cas) values('$spravne', '$spatne', '$uzivatel', '$otazka', current_timestamp())");
+        mysqli_query(DATABASE::getDb(), "insert into vysledky(spravne, spatne, uzivatel, otazka, cas) values('$spravne', '$spatne', '$uzivatel', '$otazka', current_timestamp())");
         }
 
     function je_prihlasen(){
@@ -194,17 +194,17 @@ abstract class Funkce{
 
         }
     function nick_uzivatele($id){
-        $q = mysql_query("select * from uzivatele where id = '$id'");
-        if (mysql_num_rows($q) == 0){
+        $q = mysqli_query(DATABASE::getDb(), "select * from uzivatele where id = '$id'");
+        if (mysqli_num_rows($q) == 0){
             return "Neznámý uživatel";
             }
-        $v = mysql_fetch_array($q);
+        $v = mysqli_fetch_array($q);
         return $v["nick"];
         }
 
     function _make_cat_select($kat, $r){
-        $q = mysql_query("select * from kategorie_otazky where nadrazena='$kat'");
-        while ($v = mysql_fetch_array($q)){
+        $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where nadrazena='$kat'");
+        while ($v = mysqli_fetch_array($q)){
             $r = $r." or kategorie='".$v["id"]."'";
             $r = $this->_make_cat_select($v["id"], $r);
             }
@@ -239,8 +239,8 @@ abstract class Funkce{
 
             <table>
             <?php
-            $q = mysql_query("select spravne, odpoved from odpovedi where otazka = '".$v["id"]."'") or die(mysql_error());
-            while ($v = mysql_fetch_array($q)){
+            $q = mysqli_query(DATABASE::getDb(), "select spravne, odpoved from odpovedi where otazka = '".$v["id"]."'") or die(mysql_error());
+            while ($v = mysqli_fetch_array($q)){
                 $this->zobrazit_odpoved($v);
 
                 }
@@ -266,8 +266,8 @@ abstract class Funkce{
             {
             return;
             }
-        $q = mysql_query("select * from kategorie_otazky where id = '$id'") or die(mysql_error());
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where id = '$id'") or die(mysql_error());
+        $v = mysqli_fetch_array($q);
         if ($v["nadrazena"] != -1){
 
             $this->strom_kategorii($v["nadrazena"]);
@@ -279,8 +279,8 @@ abstract class Funkce{
         ?><a href="index.php?kategorie=<?php echo $id; ?>"><?php echo $v["jmeno"]; ?></a><?php
     }
     function otazka_detail($v){
-        $q = mysql_query("select * from odpovedi where otazka='".$v["id"]."' order by RAND()") or die(mysql_error());
-        if (mysql_num_rows($q) == 0){
+        $q = mysqli_query(DATABASE::getDb(), "select * from odpovedi where otazka='".$v["id"]."' order by RAND()") or die(mysql_error());
+        if (mysqli_num_rows($q) == 0){
             return;
         }
         ?>
@@ -289,7 +289,7 @@ abstract class Funkce{
         <?php
 
         $i = 1;
-        while ($v = mysql_fetch_array($q)){
+        while ($v = mysqli_fetch_array($q)){
             if (Trim($v["odpoved"]) == ""){
                 $i++;
                 continue;

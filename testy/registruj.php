@@ -5,8 +5,8 @@ $jmeno = $_POST["jmeno"];
 $heslo1 = md5($_POST["heslo1"]);
 $heslo2 = md5($_POST["heslo2"]);
 $email = $_POST["email"];
-$q = mysql_query("select * from uzivatele where nick = '$jmeno'");
-if (mysql_num_rows($q) != 0){
+$q = mysqli_query(DATABASE::getDb(), "select * from uzivatele where nick = '$jmeno'");
+if (mysqli_num_rows($q) != 0){
     $_SESSION["info"] = array(0, "Toto uživatelské jméno již někdo používá. Vyberte si prosím jiné.");
     Header("Location: ".$_SERVER["HTTP_REFERER"]);
     }
@@ -19,7 +19,7 @@ elseif (!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2
     Header("Location: ".$_SERVER["HTTP_REFERER"]);
     }
 else{
-    mysql_query("insert into uzivatele(nick, heslo, typ, email) values('$jmeno', '$heslo1', '3', '$email')") or die(mysql_error());
+    mysqli_query(DATABASE::getDb(), "insert into uzivatele(nick, heslo, typ, email) values('$jmeno', '$heslo1', '3', '$email')") or die(mysql_error());
     $_SESSION["info"] = array(1, "Registrace byla úspěšná, nyní se můžete přihlásit");
     Header("Location: index.php");
     }

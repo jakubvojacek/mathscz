@@ -35,8 +35,8 @@ class Test extends Funkce{
         elseif($razeni == 2){
             $radit_podle="celkem-spatne, celkem";
             }
-        $q = mysql_query("select * from otazky where kontrola = '1' and $q order by $radit_podle limit $otazka, 1");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select * from otazky where kontrola = '1' and $q order by $radit_podle limit $otazka, 1");
+        $v = mysqli_fetch_array($q);
         ?>
 
         <div style="padding-bottom: 13px; "><?php $this->strom_kategorii($v["kategorie"]); ?></div>

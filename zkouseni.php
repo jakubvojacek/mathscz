@@ -62,17 +62,17 @@ if (je_prihlasen == 0 and 0){
 
 if (IsSet($_GET["test"])){     
     $test = $_GET["test"];
-    $vypis=mysql_query("select * from testy where link = '$test'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from testy where link = '$test'");
+    if (mysqli_num_rows($vypis) == 0){
         include("404.php");
         return;
         }
-    $v = mysql_fetch_array($vypis);
+    $v = mysqli_fetch_array($vypis);
     $id_testu=$v["id"];    
     $reklama = "";   
     $zobrazit_reklamu = 1;     
-    $_v=mysql_query("select * from testy where id ='$id_testu'") or die(mysql_error());
-    $_v=mysql_fetch_array($_v);
+    $_v=mysqli_query(DATABASE::getDb(), "select * from testy where id ='$id_testu'") or die(mysql_error());
+    $_v=mysqli_fetch_array($_v);
     $pocet_pusteni=$_v["pocet"];
     ?>
     <div style='margin: 20xp;'>
@@ -81,11 +81,11 @@ if (IsSet($_GET["test"])){
     <p class = 'bez'><em>Tento test byl již <?php echo $v["pocet"]; ?>x spuštěný.
     </em></p>  
     <?php 
-    $vypis=mysql_query("select * from otazky_old where test='$id_testu' order by RAND()");
-    if (0 != mysql_num_rows($vypis)){
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from otazky_old where test='$id_testu' order by RAND()");
+    if (0 != mysqli_num_rows($vypis)){
         ?><form method=post action='oprav/<?php echo $v["link"]; ?>'><?php
         $i=1;
-        while ($vysledek = mysql_fetch_array($vypis)){
+        while ($vysledek = mysqli_fetch_array($vypis)){
             $typ = $vysledek["typ"];
             $otazka=PremenZpet($vysledek["otazka"]);
             $a=PremenZpet($vysledek["a"]);
@@ -129,12 +129,12 @@ if (IsSet($_GET["test"])){
 elseif (IsSet($_GET["oprav"])){
     $test=$_GET["oprav"];
     ?><p class = 'bez'>Následuje podrobný rozbor vašeho testu; Správně odpovědi jsou označeny zelenou barvou a špatné červenou.</p><hr /><?php
-    $vypis=mysql_query("select * from testy where link = '$test'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from testy where link = '$test'");
+    if (mysqli_num_rows($vypis) == 0){
         include("404.php");
         return;
         }
-    $v = mysql_fetch_array($vypis);
+    $v = mysqli_fetch_array($vypis);
     $test=$v["id"];
     $dobre=0;
     $spatne=0;
@@ -150,8 +150,8 @@ elseif (IsSet($_GET["oprav"])){
     ?><ol><?php
     foreach ($typy as $cislo => $typ){
         if ($typ == 0){
-            $vypis=mysql_query("select * from otazky_old where id='$cislo'");
-            $vysledek=mysql_fetch_array($vypis);
+            $vypis=mysqli_query(DATABASE::getDb(), "select * from otazky_old where id='$cislo'");
+            $vysledek=mysqli_fetch_array($vypis);
             $otazka = Znacky($vysledek["otazka"]);
             $odpoved=$vysledek["spravne"];
             $stav = "Správná odpověd je: ";
@@ -177,7 +177,7 @@ elseif (IsSet($_GET["oprav"])){
             $celkovy_pocet = $celkovy_pocet + 1;
             }
         elseif ($typ == 1){
-            $vypis = mysql_fetch_array(mysql_query("select * from otazky_old where id = '$cislo'"));
+            $vypis = mysqli_fetch_array(mysqli_query(DATABASE::getDb(), "select * from otazky_old where id = '$cislo'"));
             $otazka = $vypis["otazka"];
             list($dobre, $spatne, $a, $_a) = zkontroluj($vypis, "a", $cislo, $dobre, $spatne);
             list($dobre, $spatne, $b, $_b) = zkontroluj($vypis, "b", $cislo, $dobre, $spatne);
@@ -197,7 +197,7 @@ elseif (IsSet($_GET["oprav"])){
         $pocet = $pocet + 1;
         }
     ?></ol><?php
-    mysql_query("update testy set pocet=pocet+1 where id = '$test'");
+    mysqli_query(DATABASE::getDb(), "update testy set pocet=pocet+1 where id = '$test'");
     //
     $uspesnost=ceil(($dobre/$celkovy_pocet)*100);
     if ($uspesnost >= 90){
@@ -222,11 +222,11 @@ elseif (IsSet($_GET["oprav"])){
         }   
     ?><br /><br /><p>Měl jste dobře <?php echo $dobre;?> z <?php echo $celkovy_pocet;?> otázek. To znamená úspěšnost <?php echo $uspesnost;?>%</p>
     <?php
-    /*mysql_query("insert into vysledky(test, uzivatel, znamka) values('$test', ".id_uzivatele.", '$uspesnost')");
-    //$vypis = mysql_query("select * from vysledky where test = '$test'") or die(mysql_error());
-    $celkovy_pocet = mysql_num_rows($vypis);
+    /*mysqli_query(DATABASE::getDb(), "insert into vysledky(test, uzivatel, znamka) values('$test', ".id_uzivatele.", '$uspesnost')");
+    //$vypis = mysqli_query(DATABASE::getDb(), "select * from vysledky where test = '$test'") or die(mysql_error());
+    $celkovy_pocet = mysqli_num_rows($vypis);
     $prumer = 0;
-    while ($vysledek = mysql_fetch_array($vypis)){
+    while ($vysledek = mysqli_fetch_array($vypis)){
         $prumer = $prumer + $vysledek["znamka"];
         }
     $prumer_uspesnost = round($prumer/$celkovy_pocet);
@@ -247,8 +247,8 @@ else{
     <p>Statistiku úspěšnosti Vašich testů můžete shlédnout ve <a href='http://forum.maths.cz/profile.php?id=<?php echo id_uzivatele; ?>'>Vašem profilu</a>. </p>
     <ul class='vypis_testu'>
     <?php
-    $vypis=mysql_query("select * from testy where vydano = '1' order by id desc");    
-    while ($vysledek = mysql_fetch_array($vypis)){
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from testy where vydano = '1' order by id desc");    
+    while ($vysledek = mysqli_fetch_array($vypis)){
         $id_testu=$vysledek["id"];
         $jmeno_testu=$vysledek["jmeno"];
         $url=$vysledek["link"];

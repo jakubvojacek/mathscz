@@ -19,6 +19,6 @@ if (skupina != 0){
     return;    
     }
 */ 
-mysql_query("insert into kategorie(jmeno, nadrazena) values('$jmeno', '$nadrazena')");
+mysqli_query(DATABASE::getDb(), "insert into kategorie(jmeno, nadrazena) values('$jmeno', '$nadrazena')");
 Header("Location: index.php?akce=kategorie");
 ?>

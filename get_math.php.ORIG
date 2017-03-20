@@ -4,29 +4,29 @@ $s=$_SERVER["SERVER_NAME"];
 if ($s == "localhost"){
       $connect=mysql_connect("localhost","root","htnr28du");
       $db=mysql_select_db("web176db1",$connect) or die('Nepodaøilo se pøipojit k databázi');
-      mysql_query("SET NAMES UTF8");
+      mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
       $base="http://localhost/maths.cz/";
       }
 elseif ($s == "blujacker.wz.cz" or $s == "www.blujacker.wz.cz"){
        	
       $connect=mysql_connect("mysql.webzdarma.cz","blujacker","275931");
       $db=mysql_select_db("blujacker",$connect) or die('Nepodaøilo se pøipojit k databázi');
-      mysql_query("SET NAMES UTF8");
+      mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
       $base="http://www.blujacker.wz.cz/";
       }
 
 else{
       $connect=mysql_connect("localhost","web176u1","htnr28du");
       $db=mysql_select_db("web176db1",$connect) or die('Nepodaøilo se pøipojit k databázi');
-      mysql_query("SET NAMES UTF8");
+      mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
       $base="http://maths.cz/";
       }
 
 if (IsSet($_GET["id"])){
     $id = $_GET["id"];
     
-    $vypis = mysql_query("select obr from tex where id = '$id'") or die(mysql_error());
-    $vypis = mysql_fetch_array($vypis)or die(mysql_error());
+    $vypis = mysqli_query(DATABASE::getDb(), "select obr from tex where id = '$id'") or die(mysql_error());
+    $vypis = mysqli_fetch_array($vypis)or die(mysql_error());
     $img = $vypis["obr"];
     
     //$img= file_get_contents("http://www.matweb.cz/cgi-bin/mimetex.cgi?x=0");

@@ -18,7 +18,7 @@ function uprav_delku($r, $d){
     }
 function nahraj_obrazek($real, $file, $popis){
 
-    $id = mysql_fetch_array(mysql_query("SHOW TABLE STATUS LIKE 'obrazky'"));
+    $id = mysqli_fetch_array(mysqli_query(DATABASE::getDb(), "SHOW TABLE STATUS LIKE 'obrazky'"));
     $id = $id["Auto_increment"] + 1;
 
     $jmeno = Date("Ymd").$id.$real;
@@ -31,7 +31,7 @@ function nahraj_obrazek($real, $file, $popis){
         list($sirka, $vyska) = vytvor_thumb("../".$kam);
 
         echo "<p style = 'text-align: center;'>Obrázek byl úspěšně nahrán</p>";
-        mysql_query("insert into obrazky(cesta, jmeno, autor) values('$jmeno', '$popis', '".id_autora."')") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "insert into obrazky(cesta, jmeno, autor) values('$jmeno', '$popis', '".id_autora."')") or die(mysql_error());
         echo "<a href='index.php?akce=obrazky'>Zpět do administrace</a>";
         }
     else{

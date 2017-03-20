@@ -4,8 +4,8 @@
 
 class Statistiky extends Funkce{
     function show(){
-        $q = mysql_query("select sum(spatne) as spatne, sum(spravne) as spravne from vysledky");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select sum(spatne) as spatne, sum(spravne) as spravne from vysledky");
+        $v = mysqli_fetch_array($q);
         $this->ukaz_pomer_spravne_spatne($v); //a graf
      
         ?>
@@ -25,12 +25,12 @@ class Statistiky extends Funkce{
     function zobraz_q($title, $table, $query){
         ?><div style="width: 350px;"><fieldset>
                 <legend>[ <?php echo $title; ?> ] </legend><?php
-        $q = mysql_query($query);
+        $q = mysqli_query(DATABASE::getDb(), $query);
         ?><table class="tablesorter" width="340">
         <thead>
         <tr><td>Uživatelské jméno</td><td><?php echo $table; ?></td></tr></thead>
         <tbody><?php
-        while ($v = mysql_fetch_array($q)){
+        while ($v = mysqli_fetch_array($q)){
             ?><tr><td  style="vertical-align: middle; "><img src="http://graph.facebook.com/<?php echo $v["uzivatel"]; ?>/picture" alt="fotka" /> <fb:name uid="<?php echo $v["uzivatel"]; ?>"></fb:name></td><td style="vertical-align: middle; "><?php echo $v["vystup"]; ?></td></tr><?php
             
             }
@@ -40,18 +40,18 @@ class Statistiky extends Funkce{
 
         }
     function celkem_spatne(){
-        $q = mysql_query("select sum(spatne) as spatne from otazky");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select sum(spatne) as spatne from otazky");
+        $v = mysqli_fetch_array($q);
         return $v["spatne"];
         }
     function celkem_dobre(){
-        $q = mysql_query("select sum(celkem)-sum(spatne) as dobre from otazky");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select sum(celkem)-sum(spatne) as dobre from otazky");
+        $v = mysqli_fetch_array($q);
         return $v["dobre"];
         }
     function celkem_odpovedi(){
-        $q = mysql_query("select sum(celkem) as celkem from otazky");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select sum(celkem) as celkem from otazky");
+        $v = mysqli_fetch_array($q);
         return $v["celkem"];
         }
   

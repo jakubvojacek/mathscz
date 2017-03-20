@@ -18,8 +18,8 @@ else{
 <fieldset><legend>[ Špatně zodpovězné otázky ]</legend>
 <?php
 foreach($_SESSION["otazky"] as $otazka){
-    $q = mysql_query("select * from otazky where id = '$otazka'");
-    $v = mysql_fetch_array($q);
+    $q = mysqli_query(DATABASE::getDb(), "select * from otazky where id = '$otazka'");
+    $v = mysqli_fetch_array($q);
     $this->zobrazit_reseni_otazky($v);
     }
 

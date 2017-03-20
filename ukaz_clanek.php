@@ -3,13 +3,13 @@ $zobrazit_reklamu = 1;
 
 
 function vypis_test($test){
-    $vypis = mysql_fetch_array(mysql_query("select * from testy where id = '$test'"));
+    $vypis = mysqli_fetch_array(mysqli_query(DATABASE::getDb(), "select * from testy where id = '$test'"));
     ?><p>Přejít na test <a href='testy/<?php echo $vypis["link"]; ?>'><?php echo $vypis["jmeno"]; ?></a><?php
     }
 
 if (IsSet($_GET["id"])){
     $id=$_GET["id"];
-    $vypis = mysql_query("select clanky.jmeno as jmeno_clanku,
+    $vypis = mysqli_query(DATABASE::getDb(), "select clanky.jmeno as jmeno_clanku,
                                 clanky.pocet_precteni as pocet_precteni, 
                                  clanky.uvod as uvod_clanku, 
                                  clanky.text as text_clanku, 
@@ -34,14 +34,14 @@ if (IsSet($_GET["id"])){
 
    
     
-    if (mysql_num_rows($vypis) == 0){
+    if (mysqli_num_rows($vypis) == 0){
         include("404.php");
         return;
         }  
     
-    $pole=mysql_fetch_array($vypis);    
+    $pole=mysqli_fetch_array($vypis);    
     $id_clanku = $pole["id_clanku"];  
-        mysql_query("update clanky set pocet_precteni = pocet_precteni + 1 where id = '$id_clanku'");
+        mysqli_query(DATABASE::getDb(), "update clanky set pocet_precteni = pocet_precteni + 1 where id = '$id_clanku'");
     ukaz_clanek($pole);
     ?>
     <?php echo reklama; ?>

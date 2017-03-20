@@ -51,9 +51,9 @@
                 $description="Různé hlavolamy, většinou s matematickým zaměřením.";
                 if (IsSet($_GET["hlavolam"])){
                     $hlavolam = $_GET["hlavolam"];
-                    $vypis=mysql_query("select * from hlavolamy where link ='$hlavolam'");
-                    if (mysql_num_rows($vypis) != 0){
-                        $vypis=mysql_fetch_array($vypis);
+                    $vypis=mysqli_query(DATABASE::getDb(), "select * from hlavolamy where link ='$hlavolam'");
+                    if (mysqli_num_rows($vypis) != 0){
+                        $vypis=mysqli_fetch_array($vypis);
                         $title="Hlavolam » ".$vypis["jmeno"];
                         $keywords="hlavolamy, hlavolam, hádanka, matematický hlavolam, ".$vypis["jmeno"].", ".$keywords;
                         }
@@ -64,9 +64,9 @@
                 $description="Matematické testy a cvičení, vyzkoušejte si jak na tom jste!";
                 if (IsSet($_GET["test"])){
                 $id=$_GET["test"];
-                $vypis=mysql_query("select * from testy where link ='$id'");
-                if (mysql_num_rows($vypis) != 0){
-                    $vypis=mysql_fetch_array($vypis);
+                $vypis=mysqli_query(DATABASE::getDb(), "select * from testy where link ='$id'");
+                if (mysqli_num_rows($vypis) != 0){
+                    $vypis=mysqli_fetch_array($vypis);
                     $title="Testy » ".$vypis["jmeno"];
                     }
                 }
@@ -87,9 +87,9 @@
             elseif ($akce == "o-portalu"){$title="Matematika pro každého » O portálu";}
             elseif ($akce == "podporte-nas"){$title="Matematika pro každého » Podpořte nás";}
             elseif ($akce == "ukaz_clanek" and IsSet($_GET["id"])){            
-                $vypis=mysql_query("select jmeno, klicova_slova, uvod from clanky where link ='".$_GET["id"]."'");
-                if (mysql_num_rows($vypis) != 0){
-                    $vypis=mysql_fetch_array($vypis);
+                $vypis=mysqli_query(DATABASE::getDb(), "select jmeno, klicova_slova, uvod from clanky where link ='".$_GET["id"]."'");
+                if (mysqli_num_rows($vypis) != 0){
+                    $vypis=mysqli_fetch_array($vypis);
                     $title = $vypis["jmeno"];
                     $keywords = $vypis["klicova_slova"].", ".$keywords;
                     $description = $vypis["uvod"];
@@ -98,9 +98,9 @@
             }
       
         elseif (IsSet($_GET["kategorie"])){
-            $vypis=mysql_query("select jmeno from kategorie where link ='".$_GET["kategorie"]."'");
-            if (mysql_num_rows($vypis) != 0){
-                $vypis=mysql_fetch_array($vypis);
+            $vypis=mysqli_query(DATABASE::getDb(), "select jmeno from kategorie where link ='".$_GET["kategorie"]."'");
+            if (mysqli_num_rows($vypis) != 0){
+                $vypis=mysqli_fetch_array($vypis);
                 $title="Matematika pro každého » ".$vypis["jmeno"];
                 $keywords=$vypis["jmeno"].", ".$keywords;            
                 }
@@ -238,7 +238,7 @@ else{
     <div id='page'>    
     <div id='zarovnani'>    
     <?php
-    $vypis = mysql_query("select clanky.jmeno as jmeno_clanku,
+    $vypis = mysqli_query(DATABASE::getDb(), "select clanky.jmeno as jmeno_clanku,
                                  clanky.pocet_precteni as pocet_precteni, 
                                  clanky.uvod as uvod_clanku, 
                                  clanky.id as id_clanku,
@@ -276,7 +276,7 @@ else{
     <div style="text-align: center; margin-top: 20px ;margin-bottom: 20px; "><a href="http://bikersplanet.cz/"><img src = "images/biker.png" alt = "Moto motocykl" /></a></div>                      
                                                   
     <?php
-    $vypis = mysql_query("select clanky.jmeno as jmeno_clanku, 
+    $vypis = mysqli_query(DATABASE::getDb(), "select clanky.jmeno as jmeno_clanku, 
                                 clanky.pocet_precteni as pocet_precteni,
                                  clanky.uvod as uvod_clanku, 
                                  clanky.id as id_clanku,

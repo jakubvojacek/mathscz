@@ -36,12 +36,21 @@ define("DB_PSW",'Kar4P4JvdwqeeYEC');
 define("DB_NAME", 'maths.cz');
 define("domain", '.maths.cz');
 
-$connection = @mysql_connect(DB_HOST, DB_USERNAME, DB_PSW) or die ("Není možné připojit databádddzový server.");
-$db = @mysql_select_db(DB_NAME, $connection) or die("Není možné vybrat davvvtabázi.");
-mysql_query("SET NAMES UTF8");
+class DATABASE
+{
+    public static function getDb()
+    {
+        $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PSW);
+        $db = mysqli_select_db($connection, DB_NAME);
+        mysqli_query($connection, "SET NAMES UTF8");
+        return $connection;
+    }
+}
 
-$v = mysql_query("select * from nastaveni where id = '1'");
-$v = mysql_fetch_array($v);
+
+
+$v = mysqli_query(DATABASE::getDb(), "select * from nastaveni where id = '1'");
+$v = mysqli_fetch_array($v);
 define("klicova_slova", $v["klicova_slova"]);
 define("popis_webu", $v["popis_webu"]);
 define("titulek", $v["nazev_webu"]);

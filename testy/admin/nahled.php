@@ -7,8 +7,8 @@ class Nahled extends Funkce{
              </p>
         <?php
         $id = $_GET["id"];
-        $q = mysql_query("select * from otazky where id = '$id'");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select * from otazky where id = '$id'");
+        $v = mysqli_fetch_array($q);
         $this->zobrazit_reseni_otazky($v);
         ?>
              <p><strong>Řešení: </strong><?php echo $this->znacky($v["reseni"]); ?></p>

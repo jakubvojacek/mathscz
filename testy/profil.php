@@ -10,8 +10,8 @@ class Profil extends Funkce{
             }
         //$this->id_uzivatele = $this->je_prihlasen();
         
-        $q = mysql_query("select sum(spatne) as spatne, sum(spravne) as spravne from vysledky where uzivatel='$this->id_uzivatele'");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select sum(spatne) as spatne, sum(spravne) as spravne from vysledky where uzivatel='$this->id_uzivatele'");
+        $v = mysqli_fetch_array($q);
         $this->ukaz_pomer_spravne_spatne($v);
         ?>
             <ul style="list-style: none; margin-left: 5px;">
@@ -24,13 +24,13 @@ class Profil extends Funkce{
         <?php
         }
     function uzivatelske_jmeno(){
-        $q = mysql_query("select nick from uzivatele where id='$this->id_uzivatele'");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select nick from uzivatele where id='$this->id_uzivatele'");
+        $v = mysqli_fetch_array($q);
         return $v["nick"];
         }
     function email(){
-        $q = mysql_query("select email from uzivatele where id='$this->id_uzivatele'");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select email from uzivatele where id='$this->id_uzivatele'");
+        $v = mysqli_fetch_array($q);
         return $v["email"];
         }
 

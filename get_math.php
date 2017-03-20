@@ -9,7 +9,7 @@ $s=$_SERVER["SERVER_NAME"];
 
       $db=mysql_select_db("maths.cz",$connect) or die('Nepodaøilo se pøipojit k databázi');
 
-      mysql_query("SET NAMES UTF8");
+      mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
 
       $base="http://maths.cz/";
 
@@ -22,9 +22,9 @@ if (IsSet($_GET["id"])){
 
     
 
-    $vypis = mysql_query("select obr from tex where id = '$id'") or die(mysql_error());
+    $vypis = mysqli_query(DATABASE::getDb(), "select obr from tex where id = '$id'") or die(mysql_error());
 
-    $vypis = mysql_fetch_array($vypis)or die(mysql_error());
+    $vypis = mysqli_fetch_array($vypis)or die(mysql_error());
 
     $img = $vypis["obr"];
 

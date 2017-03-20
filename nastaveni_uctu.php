@@ -5,8 +5,8 @@ $zobrazit_reklamu = 0;
 function vypis_nastaveni_uctu($id){
     ?><span style='text-decoration: underline;'>Nastavení vašeho účtu</span>:
     <table><form method = 'post' action = ''><?php
-    $vypis = mysql_query("select * from pun_users where id = $id") or die(mysql_error());
-    $v = mysql_fetch_array($vypis);
+    $vypis = mysqli_query(DATABASE::getDb(), "select * from pun_users where id = $id") or die(mysql_error());
+    $v = mysqli_fetch_array($vypis);
     $jmeno = $v["jmeno"];
     $heslo = $v["heslo"];
     $vek = $v["vek"];
@@ -40,8 +40,8 @@ function vypis_nastaveni_uctu($id){
     echo "</form></table>";
     }
 function vypis_testy($uzivatel){
-    $vypis = mysql_query("select * from vysledky where uzivatel = '$uzivatel' order by znamka desc");
-    $pocet = mysql_num_rows($vypis);
+    $vypis = mysqli_query(DATABASE::getDb(), "select * from vysledky where uzivatel = '$uzivatel' order by znamka desc");
+    $pocet = mysqli_num_rows($vypis);
     if ($pocet == 0){
         ?><p>Zatím jste nezkoušel vyplnit žádné testy. </p>
         <p>Můžete to <a href='akce/zkouseni'>vyzkoušet</a>!</p>
@@ -52,9 +52,9 @@ function vypis_testy($uzivatel){
     <table class = 'tabulka' style = 'width: 100%;' width = '100%'>
     <tr style='font-weight: bold;'><td>Test</td><td>Úspěšnost (%)</td></tr>
     <?php
-    while ($vysledek = mysql_fetch_array($vypis)){
-        $vypis2 = mysql_query("select jmeno, link from testy where id = '".$vysledek["test"]."'");
-        $vysledek2 = mysql_fetch_array($vypis2);
+    while ($vysledek = mysqli_fetch_array($vypis)){
+        $vypis2 = mysqli_query(DATABASE::getDb(), "select jmeno, link from testy where id = '".$vysledek["test"]."'");
+        $vysledek2 = mysqli_fetch_array($vypis2);
         echo "<tr><td><a href='testy/".$vysledek2["link"]."'>".$vysledek2["jmeno"]."</a></td><td>".$vysledek["znamka"]."</td></tr>";
         }
     
@@ -63,16 +63,16 @@ function vypis_testy($uzivatel){
     }
 
 function vypis_komentare($uzivatel){
-    $vypis = mysql_query("select predmet, clanek, id, datum from komentare where link = '$uzivatel' order by id desc");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select predmet, clanek, id, datum from komentare where link = '$uzivatel' order by id desc");
+    if (mysqli_num_rows($vypis) == 0){
         ?><p>Zatím jste žádné komentáře nepřidal.</p><?php
         return;
         }
     ?><table class = 'tabulka' style = 'width: 100%;' width = '100%'><?php
     echo "<tr style='font-weight: bold;'><td>Předmět komentáře</td><td>Článek</td><td>Datum</td></tr>";
-    while ($vysledek = mysql_fetch_array($vypis)){
-        $vypis2 = mysql_query("select jmeno, link from clanky where id = '".$vysledek["clanek"]."'");
-        $vysledek2 = mysql_fetch_array($vypis2);
+    while ($vysledek = mysqli_fetch_array($vypis)){
+        $vypis2 = mysqli_query(DATABASE::getDb(), "select jmeno, link from clanky where id = '".$vysledek["clanek"]."'");
+        $vysledek2 = mysqli_fetch_array($vypis2);
         echo "<tr><td><a href='clanky/".$vysledek2["link"]."#komentar-".$vysledek["id"]."'>".$vysledek["predmet"]."</a></td>";
         echo "<td><a href='clanky/".$vysledek2["link"]."'>".$vysledek2["jmeno"]."</a></td>";
         ?><td><?php echo $vysledek["datum"]; ?></td></tr><?php

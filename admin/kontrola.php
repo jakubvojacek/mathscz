@@ -4,8 +4,8 @@ function je_prihlasen_kontrola_admin(){
     if (IsSet($_COOKIE["id"]) and IsSet($_COOKIE["heslo"])){ 
         $id = $_COOKIE["id"];
         $heslo = $_COOKIE["heslo"];
-        $vypis = mysql_query("select * from uzivatele where id = '$id' and heslo = '$heslo'");
-        if (mysql_num_rows($vypis) == 0){
+        $vypis = mysqli_query(DATABASE::getDb(), "select * from uzivatele where id = '$id' and heslo = '$heslo'");
+        if (mysqli_num_rows($vypis) == 0){
             echo "tady hje pes";
             return 0;
             }

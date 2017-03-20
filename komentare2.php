@@ -123,10 +123,10 @@ if (je_prihlasen == 0){
 </form>
 <?php
 
-$vypis=mysql_query("select * from komentare where clanek='$id_clanku' order by id");
+$vypis=mysqli_query(DATABASE::getDb(), "select * from komentare where clanek='$id_clanku' order by id");
 
-if (mysql_num_rows($vypis) != 0){
-    while ($vysledek = mysql_fetch_array($vypis)){
+if (mysqli_num_rows($vypis) != 0){
+    while ($vysledek = mysqli_fetch_array($vypis)){
         ukaz_komentar($vysledek);        
         }
     }

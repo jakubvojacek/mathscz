@@ -15,7 +15,7 @@ if (!$resp->is_valid) {
     }
 else{
 
-    mysql_query("insert into pripominky(jmeno, predmet, text, cas) values('$jmeno', '$predmet', '$text', current_timestamp())");
+    mysqli_query(DATABASE::getDb(), "insert into pripominky(jmeno, predmet, text, cas) values('$jmeno', '$predmet', '$text', current_timestamp())");
     Header("Location: index.php?akce=vzkazy-pripominky");
 }
 ?>

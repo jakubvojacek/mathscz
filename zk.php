@@ -12,6 +12,6 @@ define(domain, '.maths.cz');
 
 $connection = @mysql_connect(DB_HOST, DB_USERNAME, DB_PSW) or die ("Není možné připojit databádddzový server.");
 $db = @mysql_select_db(DB_NAME, $connection) or die("Není možné vybrat databázi.");
-mysql_query("SET NAMES UTF8");
+mysqli_query(DATABASE::getDb(), "SET NAMES UTF8");
 echo "pripojen";
 ?>

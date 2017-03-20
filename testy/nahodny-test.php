@@ -23,8 +23,8 @@ class NahodnyTest extends Funkce{
         }
     function get_rand($kat){
         $q = $this->make_cat_select($kat);
-        $q = mysql_query("select * from otazky where kontrola = '1' and $q order by RAND() limit 1");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select * from otazky where kontrola = '1' and $q order by RAND() limit 1");
+        $v = mysqli_fetch_array($q);
         return $v["id"];
         }
     function ukaz_otazku(){
@@ -37,8 +37,8 @@ class NahodnyTest extends Funkce{
             }
         
         
-        $q = mysql_query("select * from otazky where id = '$otazka'");
-        $v = mysql_fetch_array($q);
+        $q = mysqli_query(DATABASE::getDb(), "select * from otazky where id = '$otazka'");
+        $v = mysqli_fetch_array($q);
 
         ?>
         <div style="padding-bottom: 13px; "><?php $this->strom_kategorii($v["kategorie"]); ?></div>

@@ -7,8 +7,8 @@ echo "<table>";
 if (IsSet($_GET["id"])){
     $id = $_GET["id"];
     echo "<input type = 'hidden' name = 'id_'  value = '$id' />";
-    $vypis = mysql_query("select * from otazky_old where id = '$id'");
-    $vypis = mysql_fetch_array($vypis);
+    $vypis = mysqli_query(DATABASE::getDb(), "select * from otazky_old where id = '$id'");
+    $vypis = mysqli_fetch_array($vypis);
     echo "<input type = 'hidden' name = 'test_' value = '".$vypis["test"]."' />";
     $otazka = $vypis["otazka"];
     $a = $vypis["a"];

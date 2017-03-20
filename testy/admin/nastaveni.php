@@ -1,6 +1,6 @@
 <?php
-$q = mysql_query("select * from nastaveni_otazky where id = '1'") or die(mysql_error());
-$v = mysql_fetch_array($q);
+$q = mysqli_query(DATABASE::getDb(), "select * from nastaveni_otazky where id = '1'") or die(mysql_error());
+$v = mysqli_fetch_array($q);
 ?>
 
 <form method="post" action="uloz-nastaveni.php">

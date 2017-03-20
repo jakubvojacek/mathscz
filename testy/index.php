@@ -21,8 +21,8 @@ include("./funkce.php");
   }
   $title = "Online testy - Matematika, Logika, Programování, Právo";
   if ($kategorie != ""){
-      $q = mysql_query("select * from kategorie_otazky where id = '$kategorie'");
-      $v = mysql_fetch_array($q);
+      $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where id = '$kategorie'");
+      $v = mysqli_fetch_array($q);
       $title = "Online testy - ".$v["jmeno"];
   }
   ?>
@@ -151,8 +151,8 @@ class Index extends Funkce{
         <p>Vyberte kategorii</p>
         <ul>
         <?php
-        $q = mysql_query("select * from kategorie_otazky where nadrazena = '-1' order by jmeno");
-        while ($v = mysql_fetch_array($q)){
+        $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where nadrazena = '-1' order by jmeno");
+        while ($v = mysqli_fetch_array($q)){
             ?>
             <li><a href='index.php?kategorie=<?php echo $v["id"]; ?>'><?php echo $v["jmeno"]; ?></a></li>
             <?php
@@ -202,30 +202,30 @@ class Index extends Funkce{
             if (!is_numeric($kategorie)){
                 return 0;
                 }   
-            $q = mysql_query("select * from kategorie_otazky where id = '$kategorie'");
-            $v = mysql_fetch_array($q);
+            $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where id = '$kategorie'");
+            $v = mysqli_fetch_array($q);
             $id_kategorie = $v["id"];
             
             ?>
             <div style="padding-bottom: 13px; "><?php $this->strom_kategorii($_GET["kategorie"]); ?></div>
             <h2><?php echo $v["jmeno"]; ?></h2><?php
-            $q = mysql_query("select * from kategorie_otazky where nadrazena = '$id_kategorie' order by jmeno");
-            if (mysql_num_rows($q) == 0){
+            $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where nadrazena = '$id_kategorie' order by jmeno");
+            if (mysqli_num_rows($q) == 0){
                 ?><p>Tato kategorie již nemá žádné podkategorie</p><?php
                 }
             else{
                 ?>
                 <p>Možné podkategorie</p>
                 <ul><?php
-                while ($v = mysql_fetch_array($q)){
+                while ($v = mysqli_fetch_array($q)){
                     ?><li><a href='index.php?kategorie=<?php echo $v["id"]; ?>'><?php echo $v["jmeno"]; ?></a></li><?php
                     }
                 ?></ul><?php
                 }
             //vyber zpusobu testovani
             $q = $this->make_cat_select($id_kategorie);
-            $q = mysql_query("select count(*) as pocet from otazky where kontrola = '1' and  $q") or die(mysql_error());
-            $v = mysql_fetch_array($q);
+            $q = mysqli_query(DATABASE::getDb(), "select count(*) as pocet from otazky where kontrola = '1' and  $q") or die(mysql_error());
+            $v = mysqli_fetch_array($q);
             $pocet_otazek = $v["pocet"];
 
             if ($this->je_prihlasen == 0){

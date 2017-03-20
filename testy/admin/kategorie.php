@@ -2,11 +2,11 @@
 <table>
 <?php 
 function vypis_kategorie($nadrazena, $odsazeni){
-    $q = mysql_query("select * from kategorie_otazky where nadrazena = '$nadrazena'");
-    if (mysql_num_rows($q) == 0){
+    $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where nadrazena = '$nadrazena'");
+    if (mysqli_num_rows($q) == 0){
         return;
         }
-    while ($v = mysql_fetch_array($q)){
+    while ($v = mysqli_fetch_array($q)){
         ?><tr><td>
         <?php
         $i = 0;

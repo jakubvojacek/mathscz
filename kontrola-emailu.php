@@ -3,15 +3,15 @@ include("funkce/pripojeni.php");
 include("funkce/funkce.php");
 function jmeno_existuje($jmeno){
     $seo = seo_url($jmeno).".html";
-    $vypis = mysql_query("select nick from uzivatele where link = '$seo'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select nick from uzivatele where link = '$seo'");
+    if (mysqli_num_rows($vypis) == 0){
         return false;
         }
     return true;
     }
 function email_existuje($email){
-    $vypis = mysql_query("select email from uzivatele where email = '$email'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select email from uzivatele where email = '$email'");
+    if (mysqli_num_rows($vypis) == 0){
         return false;
         }
     return true;

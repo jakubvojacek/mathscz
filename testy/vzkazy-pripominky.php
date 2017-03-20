@@ -31,8 +31,8 @@ function PremenKomentar($text) {
     return Trim($text);
     }
 
-$q = mysql_query("select * from pripominky order by id desc");
-while ($v = mysql_fetch_array($q)){
+$q = mysqli_query(DATABASE::getDb(), "select * from pripominky order by id desc");
+while ($v = mysqli_fetch_array($q)){
     ?>
     <div style="padding-bottom: 15px; border-bottom: 1px solid#000; padding-top: 5px;">
         <strong>Jméno: </strong><?php echo PremenKomentar($v["jmeno"]); ?>

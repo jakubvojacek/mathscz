@@ -10,7 +10,7 @@ class Uloz extends Funkce{
         if (IsSet($_POST["check-$i"]) and $_POST["check-$i"] == "on"){
             $spravne = 1;
             }
-        mysql_query("insert into odpovedi(spravne, odpoved, otazka) values('$spravne', '$odpoved', '$otazka')") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "insert into odpovedi(spravne, odpoved, otazka) values('$spravne', '$odpoved', '$otazka')") or die(mysql_error());
 
         }
 
@@ -23,7 +23,7 @@ class Uloz extends Funkce{
         $kategorie = $_POST["kat"];
         $reseni = ""; //uzicatele jsou lini a tohle tak budou vyplnovat :-)
 
-        mysql_query("insert into otazky(otazka, kategorie, reseni, kontrola) values('$otazka', '$kategorie', '$reseni', '0')") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "insert into otazky(otazka, kategorie, reseni, kontrola) values('$otazka', '$kategorie', '$reseni', '0')") or die(mysql_error());
         $id = mysql_insert_id() or die(mysql_error());
 
 

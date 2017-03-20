@@ -9,10 +9,10 @@ function uloz_odpoved($otazka, $i, $nova){
         }
     if ($nova == 1){
         
-        mysql_query("insert into odpovedi(spravne, odpoved, otazka) values('$spravne', '$odpoved', '$otazka')") or die(mysql_error());
+        mysqli_query(DATABASE::getDb(), "insert into odpovedi(spravne, odpoved, otazka) values('$spravne', '$odpoved', '$otazka')") or die(mysql_error());
         return;
         }
-    mysql_query("update odpovedi set spravne='$spravne', odpoved='$odpoved', otazka='$otazka' where id = '$id'") or die(mysql_error());
+    mysqli_query(DATABASE::getDb(), "update odpovedi set spravne='$spravne', odpoved='$odpoved', otazka='$otazka' where id = '$id'") or die(mysql_error());
     }
 
 include("../pripojeni.php");
@@ -23,12 +23,12 @@ $kategorie = $_POST["kat"];
 $reseni = $_POST["reseni"];
 $nova = 0;
 if ($id == 0){
-    mysql_query("insert into otazky(otazka, kategorie, reseni, kontrola) values('$otazka', '$kategorie', '$reseni', '1')") or die(mysql_error());
+    mysqli_query(DATABASE::getDb(), "insert into otazky(otazka, kategorie, reseni, kontrola) values('$otazka', '$kategorie', '$reseni', '1')") or die(mysql_error());
     $id = mysql_insert_id() or die(mysql_error());
     $nova = 1;
     }
 else{
-    mysql_query("update otazky set otazka = '$otazka', kategorie = '$kategorie', reseni = '$reseni' where id = '$id'") or die(mysql_error());
+    mysqli_query(DATABASE::getDb(), "update otazky set otazka = '$otazka', kategorie = '$kategorie', reseni = '$reseni' where id = '$id'") or die(mysql_error());
     }
 
 

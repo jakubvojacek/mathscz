@@ -15,9 +15,9 @@
         data.addRows([
         <?php
       
-        $q = mysql_query("SELECT sum(spravne) as spravne, sum(spatne) as spatne, cas FROM `vysledky` group by DATE(cas)");
+        $q = mysqli_query(DATABASE::getDb(), "SELECT sum(spravne) as spravne, sum(spatne) as spatne, cas FROM `vysledky` group by DATE(cas)");
         
-        while ($v = mysql_fetch_array($q)){
+        while ($v = mysqli_fetch_array($q)){
             echo "[new Date(".(Date("Y, n-1, j", strtotime($v["cas"])))."), ";
             echo $v["spravne"]+$v["spatne"].", undefined, undefined, ".$v["spravne"].", undefined, undefined],\n";
         }

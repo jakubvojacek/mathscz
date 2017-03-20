@@ -2,7 +2,7 @@
 <?php
 
 function zobraz_autora($id){
-    $vypis=mysql_query("select 
+    $vypis=mysqli_query(DATABASE::getDb(), "select 
                             uzivatele.jmeno as jmeno,
                             uzivatele.nick as username,
                             uzivatele.email as email,
@@ -17,8 +17,8 @@ function zobraz_autora($id){
                             group by uzivatele.link
                             
                             ") or die(mysql_error());   
-    $v = mysql_fetch_array($vypis); 
-    $v2=mysql_fetch_array(mysql_query("select count(*) as pocet from clanky where autor = '".$v["id_autora"]."' and dokoncen = 'ano'"));
+    $v = mysqli_fetch_array($vypis); 
+    $v2=mysqli_fetch_array(mysqli_query(DATABASE::getDb(), "select count(*) as pocet from clanky where autor = '".$v["id_autora"]."' and dokoncen = 'ano'"));
     $v["pocet_clanku"] = $v2["pocet"];
     $id_autora = $v["id_autora"];
     ?>
@@ -32,9 +32,9 @@ function zobraz_autora($id){
     </table>
     <h2>Nejčtenější články autora:</h2>
     <?php
-    $vypis=mysql_query("select * from clanky where autor = '$id_autora' and dokoncen = 'ano' order by pocet_precteni desc limit 5") or die(mysql_error());
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from clanky where autor = '$id_autora' and dokoncen = 'ano' order by pocet_precteni desc limit 5") or die(mysql_error());
     ?><ol><?php
-    while($vysledek = mysql_fetch_array($vypis)){
+    while($vysledek = mysqli_fetch_array($vypis)){
         ?><li><a href='clanky/<?php echo $vysledek["link"]; ?>'><?php echo $vysledek["jmeno"]; ?></a>
          | <?php echo $vysledek["pocet_precteni"]; ?></li>
         <?php
@@ -42,9 +42,9 @@ function zobraz_autora($id){
     
     ?></ol><?php
     ?><h2>Všechny články autora (<?php echo $v["pocet_clanku"]; ?>):</h2><?php
-    $vypis=mysql_query("select * from clanky where autor = '$id_autora' and dokoncen = 'ano' order by id desc") or die(mysql_error());
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from clanky where autor = '$id_autora' and dokoncen = 'ano' order by id desc") or die(mysql_error());
     ?><ul><?php
-    while($vysledek = mysql_fetch_array($vypis)){
+    while($vysledek = mysqli_fetch_array($vypis)){
         ?><li><a href='clanky/<?php echo $vysledek["link"]; ?>'><?php echo $vysledek["jmeno"]; ?></a>
          | <?php echo $vysledek["pocet_precteni"]; ?></li>
         <?php
@@ -55,14 +55,14 @@ function zobraz_autora($id){
     }
 
 function zobraz_vsechny(){
-    $vypis=mysql_query("select * from uzivatele where typ = '0' or typ = '1' order by nick") or die(mysql_error());
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from uzivatele where typ = '0' or typ = '1' order by nick") or die(mysql_error());
     ?>
     <img src="images/redakce.gif" class="redakce" alt="" /><br />
     <div id="borderarround">
     <br />
     <table class="membertable" cellpadding="0" cellspacing="0">
     <?php    
-    while ($vysledek=mysql_fetch_array($vypis)){ 
+    while ($vysledek=mysqli_fetch_array($vypis)){ 
         $jmeno=$vysledek["nick"];
         $popis=$vysledek["popis"];
         //$icq=$vysledek["icq"];

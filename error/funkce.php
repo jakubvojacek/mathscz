@@ -1,15 +1,15 @@
 <?php
 function jmeno_existuje($jmeno){
     $seo = seo_url($jmeno).".html";
-    $vypis = mysql_query("select nick from uzivatele where link = '$seo'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select nick from uzivatele where link = '$seo'");
+    if (mysqli_num_rows($vypis) == 0){
         return false;
         }
     return true;
     }
 function email_existuje($email){
-    $vypis = mysql_query("select email from uzivatele where email = '$email'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select email from uzivatele where email = '$email'");
+    if (mysqli_num_rows($vypis) == 0){
         return false;
         }
     return true;
@@ -18,11 +18,11 @@ function je_prihlasen(){
     if (IsSet($_COOKIE["id"]) and IsSet($_COOKIE["heslo"])){ 
         $id = $_COOKIE["id"];
         $heslo = $_COOKIE["heslo"];
-        $vypis = mysql_query("select * from uzivatele where id = '$id' and heslo = '$heslo'");
-        if (mysql_num_rows($vypis) == 0){
+        $vypis = mysqli_query(DATABASE::getDb(), "select * from uzivatele where id = '$id' and heslo = '$heslo'");
+        if (mysqli_num_rows($vypis) == 0){
             return 0;
             }
-        $v = mysql_fetch_array($vypis);
+        $v = mysqli_fetch_array($vypis);
         define("id_uzivatele", $id);
         define("jmeno_uzivatele", $v["nick"]);
         define("skupina", $v["typ"]);
@@ -86,10 +86,10 @@ function vrat_obrazek($re){
     $id= $re[1];
     $nahled = $re[2];
     $zarovnani = $re[3];
-    $vypis=mysql_query("select * from obrazky where id = '$id'") or die(mysql_error());
-    if (mysql_num_rows($vypis) != 0){
+    $vypis=mysqli_query(DATABASE::getDb(), "select * from obrazky where id = '$id'") or die(mysql_error());
+    if (mysqli_num_rows($vypis) != 0){
     
-        $vypis=mysql_fetch_array($vypis) or die(mysql_error());
+        $vypis=mysqli_fetch_array($vypis) or die(mysql_error());
         $src="obrazky/_".$vypis["cesta"];
         $src2="obrazky/".$vypis["cesta"];
         list($sirka, $vyska) =  getimagesize($src2);
@@ -121,8 +121,8 @@ function vrat_math($re){
     //x^2
     $adresa2 = "\gammacorrection{1}\dpi{150}\parstyle\begin{align*}".$adresa."\end{align*}";
     $my_adresa = HTMLSpecialChars($adresa, ENT_QUOTES);
-    $vypis = mysql_query("select * from tex where jmeno = '$my_adresa'");
-    if (mysql_num_rows($vypis) == 0){
+    $vypis = mysqli_query(DATABASE::getDb(), "select * from tex where jmeno = '$my_adresa'");
+    if (mysqli_num_rows($vypis) == 0){
         
         
         $arr = split(" ", $adresa2);
@@ -137,10 +137,10 @@ function vrat_math($re){
         $blob=file_get_contents("http://www.quantnet.com/cgi-bin/mathtex.cgi?$adresa2");
         //$blob=file_get_contents("http://www.matweb.cz/cgi-bin/mimetex.cgi?$adresa2");
         $blob = base64_encode($blob);
-        mysql_query("insert into tex(jmeno, obr) values('$my_adresa', '$blob')") or die(mysql_error());        
+        mysqli_query(DATABASE::getDb(), "insert into tex(jmeno, obr) values('$my_adresa', '$blob')") or die(mysql_error());        
         }
-    $vypis = mysql_query("select id from tex where jmeno = '$my_adresa'");
-    $vypis = mysql_fetch_array($vypis);
+    $vypis = mysqli_query(DATABASE::getDb(), "select id from tex where jmeno = '$my_adresa'");
+    $vypis = mysqli_fetch_array($vypis);
     $id = $vypis["id"];
     return "<img style ='vertical-align: center; margin:2px;margin-bottom:0px;' src='get_math.php?id=$id' alt='$adresa' />";
     }
@@ -173,16 +173,16 @@ function vrat_py($kod){
 
 function vrat_clanek($kod){
     $kod=$kod[1];  
-    $v=mysql_query("select link, jmeno, uvod from clanky where id = '$kod'");
-    $v=mysql_fetch_array($v);   
+    $v=mysqli_query(DATABASE::getDb(), "select link, jmeno, uvod from clanky where id = '$kod'");
+    $v=mysqli_fetch_array($v);   
     $title = wordwrap($v["uvod"], 55, "<br />");
     return "<a href='clanky/".$v["link"]."' title='$title' class='tooltip'>".$v["jmeno"]."</a>";
     }
 
 function vrat_priklad($kod){
     $kod=$kod[1]; 
-    $v=mysql_query("select * from priklady where id = '$kod'");
-    $v=mysql_fetch_array($v);
+    $v=mysqli_query(DATABASE::getDb(), "select * from priklady where id = '$kod'");
+    $v=mysqli_fetch_array($v);
     $r = Znacky($v["otazka"]);    
     $r =$r."<div style='text-align: center;margin-top:10px;'>";
     $r =$r."<input value = 'Zobrazit řešení' type='button' id = 'tlacitko-$kod' onclick= 'rozbal_reseni(\"$kod\")'  style='cursor:pointer;' /><br /><br />";
@@ -280,24 +280,24 @@ function ukaz_clanek($v){
     }
     
 function ukaz($vypis){
-    if (mysql_num_rows($vypis) == 0){
+    if (mysqli_num_rows($vypis) == 0){
         ?><p>Vašemu přání neodpovídá ani jeden článek. </p><?php   
         }
     
-    while ($v = mysql_fetch_array($vypis)){    
+    while ($v = mysqli_fetch_array($vypis)){    
         ukaz_clanek($v);    
         }
 
 
     }
 function ukaz_testy($query){
-    $vypis = mysql_query($query);
+    $vypis = mysqli_query(DATABASE::getDb(), $query);
     ?>
     <div class="post_velky"><div class="header">Poslední testy</div><div class="entry">
     <table><tr><td width = "400" cellpading = "5">
     <?php
     $pocet = 0;
-    while ($vysledek = mysql_fetch_array($vypis)){
+    while ($vysledek = mysqli_fetch_array($vypis)){
         $text = substr($vysledek["jmeno"], 0, 35);
         if (strlen($text) < strlen($vysledek["jmeno"])){
             $text = $text."...";
@@ -314,8 +314,8 @@ function ukaz_testy($query){
     }
 
 function _make_cat_select($kat, $r){
-        $q = mysql_query("select * from kategorie_otazky where nadrazena='$kat'");
-        while ($v = mysql_fetch_array($q)){
+        $q = mysqli_query(DATABASE::getDb(), "select * from kategorie_otazky where nadrazena='$kat'");
+        while ($v = mysqli_fetch_array($q)){
             $r = $r." or kategorie='".$v["id"]."'";
             $r = _make_cat_select($v["id"], $r);
             }
@@ -331,11 +331,11 @@ function make_cat_select($kat){
 
 
 function nahodna_otazka(){
-    $q1 = mysql_query("select count(*) as pocet from otazky where ".make_cat_select(3)) or die(mysql_error());
-    $v1 = mysql_fetch_array($q1);
+    $q1 = mysqli_query(DATABASE::getDb(), "select count(*) as pocet from otazky where ".make_cat_select(3)) or die(mysql_error());
+    $v1 = mysqli_fetch_array($q1);
     $max_pocet = $v1["pocet"];
-    $q2 = mysql_query("select id, otazka from otazky where ".make_cat_select(3)." order by RAND() LIMIT 1") or die(mysql_error());
-    $v2 = mysql_fetch_array($q2);
+    $q2 = mysqli_query(DATABASE::getDb(), "select id, otazka from otazky where ".make_cat_select(3)." order by RAND() LIMIT 1") or die(mysql_error());
+    $v2 = mysqli_fetch_array($q2);
     $id_otazky = $v2["id"];
 
     ?>
@@ -346,9 +346,9 @@ function nahodna_otazka(){
     <input type="hidden" name="otazka" value="<?php echo $id_otazky; ?>" />
     <p><?php echo znacky($v2["otazka"]); ?></p>
         <?php
-        $q3 = mysql_query("select * from odpovedi where otazka='$id_otazky' order by RAND()") or die(mysql_error());
+        $q3 = mysqli_query(DATABASE::getDb(), "select * from odpovedi where otazka='$id_otazky' order by RAND()") or die(mysql_error());
         $i = 1;
-        while ($v3 = mysql_fetch_array($q3)){
+        while ($v3 = mysqli_fetch_array($q3)){
             if (Trim($v3["odpoved"]) == ""){
                 $i++;
                 continue;

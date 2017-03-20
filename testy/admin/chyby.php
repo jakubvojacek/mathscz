@@ -5,8 +5,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-$q = mysql_query("select count(*) as pocet, otazka from chyby group by otazka order by pocet desc");
-while ($v = mysql_fetch_array($q)){
+$q = mysqli_query(DATABASE::getDb(), "select count(*) as pocet, otazka from chyby group by otazka order by pocet desc");
+while ($v = mysqli_fetch_array($q)){
     ?>
     <tr>
         <td><a href="index.php?akce=nahled&id=<?php echo $v["otazka"]; ?>">Náhled [<?php echo $v["otazka"]; ?>]</a></td><td><?php echo $v["pocet"]; ?></td>

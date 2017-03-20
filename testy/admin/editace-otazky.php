@@ -1,15 +1,15 @@
 <?php
 if (IsSet($_GET["id"])){
     $id = $_GET["id"];
-    $q = mysql_query("select * from otazky where id = '$id'");
-    $v = mysql_fetch_array($q);
+    $q = mysqli_query(DATABASE::getDb(), "select * from otazky where id = '$id'");
+    $v = mysqli_fetch_array($q);
     $kategorie = $v["kategorie"];
     $otazka = $v["otazka"];
     $reseni = $v["reseni"];
-    $q = mysql_query("select * from odpovedi where otazka = '$id'");
+    $q = mysqli_query(DATABASE::getDb(), "select * from odpovedi where otazka = '$id'");
     $i = 0;
     $odpovedi = array();
-    while ($v = mysql_fetch_array($q)){
+    while ($v = mysqli_fetch_array($q)){
         $odpovedi[] = array($v["id"], $v["spravne"], $v["odpoved"]);
         $i = $i + 1;
         }

@@ -17,6 +17,6 @@ $klicova_slova = $_POST["klicova_slova"];
 $url_webu = $_POST["url_webu"];
 $popis_webu = $_POST["popis_webu"];  
 $reklama = $_POST["reklama"];    
-mysql_query("update nastaveni set reklama='$reklama', popis_webu='$popis_webu', url_webu='$url_webu',  nazev_webu='$nazev_webu', klicova_slova='$klicova_slova' where id = '1'") or die(mysql_error());
+mysqli_query(DATABASE::getDb(), "update nastaveni set reklama='$reklama', popis_webu='$popis_webu', url_webu='$url_webu',  nazev_webu='$nazev_webu', klicova_slova='$klicova_slova' where id = '1'") or die(mysql_error());
 Header("Location: index.php?akce=nastaveni");
 ?>

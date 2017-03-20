@@ -19,11 +19,11 @@ class Otazky extends Funkce{
         if (IsSet($_GET["kat"])){
             $q = " where ".$this->make_cat_select($_GET["kat"]);
             }
-        $q = mysql_query("select * from otazky $q order by id desc") or die(mysql_error());
-        if (mysql_num_rows($q) == 0){
+        $q = mysqli_query(DATABASE::getDb(), "select * from otazky $q order by id desc") or die(mysql_error());
+        if (mysqli_num_rows($q) == 0){
             return;
             }
-        while ($v = mysql_fetch_array($q)){
+        while ($v = mysqli_fetch_array($q)){
             ?><tr><td><?php echo $v["otazka"]; ?></td><?php
             ?><td><a href='index.php?akce=editace-otazky&id=<?php echo $v["id"]; ?>'>Editovat</a> / 
                 <a href="smazat.php?otazka=<?php echo $v["id"]; ?>">Smazat</a>
