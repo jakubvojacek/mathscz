@@ -467,7 +467,6 @@ a.obsah:hover{
   .textcl {
     padding: 0px;
 	margin: 0px;
-	display: inline-block;
 	font-family: Verdana, sans-serif, Arial;
 
 	font-size: 0.95em;
@@ -953,7 +952,5 @@ ul{
 
 
 img {
-
     max-width: 100%;
-
 }
