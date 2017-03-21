@@ -188,7 +188,6 @@
     <span class="navbuttons">                        
     <a href="index.php">hlavní strana</a>&nbsp;&nbsp;&nbsp;                        
         <a href="akce/o-portalu">o portálu</a>&nbsp;&nbsp;&nbsp;                        
-        <a href="http://forum.matweb.cz">fórum</a>&nbsp;&nbsp;&nbsp;
         <a href="/testy">testy</a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="akce/hlavolamy">hlavolamy</a>&nbsp;&nbsp;&nbsp;&nbsp;          
    
