@@ -295,7 +295,7 @@ abstract class Funkce{
                 continue;
 
                 }
-            ?><tr><td style="vertical-align: middle; width: 10px; "><input id = "odpoved-<?php echo $i; ?>" type = 'hidden' name = 'odpoved-<?php echo $i; ?>' value = '<?php echo $v["id"]; ?>' /><input name='check-<?php echo $i; ?>' type = 'checkbox' /></td>
+            ?><tr><td style="vertical-align: middle; width: 10px; "><input  type = 'hidden' name = 'odpoved-<?php echo $i; ?>' value = '<?php echo $v["id"]; ?>' /><input name='check-<?php echo $i; ?>' type = 'checkbox' id = "odpoved-<?php echo $i; ?>" /></td>
                 <td><label for="odpoved-<?php echo $i; ?>">
             <?php echo $this->znacky($v["odpoved"]); ?></label></td></tr>
             <?php
