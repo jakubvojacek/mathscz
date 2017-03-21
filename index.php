@@ -124,7 +124,6 @@
         <meta name="description" content="<?php echo $description;?>" />                               
         <meta name="DC.Description.abstract" content="<?php echo $description;?>" />                                                         
         <meta name="robots" content="all,follow" />       
-<script type="text/javascript" src="js/prototype.js"></script>          
 <script type="text/javascript" src="js/jquery_004.js"></script>          
 <script type="text/javascript" src="js/jquery.js"></script>          
 <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>          
