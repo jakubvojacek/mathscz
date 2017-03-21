@@ -126,10 +126,7 @@
         <meta name="robots" content="all,follow" />       
 <script type="text/javascript" src="js/jquery_004.js"></script>          
 <script type="text/javascript" src="js/jquery.js"></script>          
-<script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>          
 <script src="js/vloz.js" type="text/javascript"></script>          
-<script type = "text/javascript" src = "js/zxml.src.js"></script>           
-<script type = "text/javascript" src = "js/zxml.js"></script>           
 <script type="text/javascript" src="https://www.google.cz/coop/cse/brand?form=searchbox_004541203645099874140%3Afg23xotx3ds&lang=cs"></script>                                                                  
         <meta name="author" content="Jakub Vojáček" />                               
         <link href="favicon.ico" rel="shortcut icon" />                               
