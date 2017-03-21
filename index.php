@@ -273,7 +273,7 @@ else{
     </table>    
     </div>
                     
-    <div style="text-align: center; margin-top: 20px ;margin-bottom: 20px; "><a href="http://bikersplanet.cz/"><img src = "images/biker.png" alt = "Moto motocykl" /></a></div>                      
+                     
                                                   
     <?php
     $vypis = mysqli_query(DATABASE::getDb(), "select clanky.jmeno as jmeno_clanku, 
