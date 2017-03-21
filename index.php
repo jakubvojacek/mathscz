@@ -13,6 +13,9 @@
     enable_page_level_ads: true
   });
 </script>
+<script type="text/javascript" async
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <meta http-equiv="Content-language" content="cs" /> 
@@ -109,8 +112,8 @@
         /*<base href="<?php echo url_webu;?>" />
          * <base href="http://localhost/maths/" />  */
         ?>
+        <base href="https://maths.cz" />
 
-         <base href="https://maths.cz" />
         <title>                                      
             <?php echo $title;?>                            
         </title>                               
@@ -216,7 +219,7 @@ if (IsSet($_GET["akce"]) or IsSet($_GET["stranka"])){
     elseif ($stranka == "o_portalu.php"){$obr="navtype_about.gif";}
     elseif ($stranka == "zkouseni.php"){$obr="navtype_testy.gif";}
     ?>     
-    <img src='images/<?php echo $obr;?>' alt='<?php echo $obr;?>' /><br />    
+    <img class = "lista" src='images/<?php echo $obr;?>' alt='<?php echo $obr;?>' /><br />    
     <div id='page'> 
     <div id='zarovnani'>   
     <?php   
@@ -309,13 +312,11 @@ if ($zobrazit_reklamu == 1){
 
     }
     ?>                  
-    <img src="images/dotted_line.gif" class="dotline" alt="" /><br />                   
+    <img class = "lista" src="images/dotted_line.gif" class="dotline" alt="" /><br />                   
     <div id="footer">                         
     <span class="footext">          Kopírovat obsah stránek, čí s ním jinak manipulovat bez svolení jeho autora, je zakázáno.<br /> 
     </span>        <br />       ISSN: 1803-7615 &copy; maths.cz 2008-2017 &copy; content:                  
-    <a href='http://maths.cz/redaktor/jakub-vojacek.html'>Jakub Vojáček</a>; design:                  
-    
-    <script src="http://c1.navrcholu.cz/code?site=130443;t=b14" type="text/javascript"></script><noscript><div><a href="http://navrcholu.cz/"><img src="http://c1.navrcholu.cz/hit?site=130443;t=b14;ref=;jss=0" width="14" height="14" alt="NAVRCHOLU.cz" style="border:none" /></a></div></noscript>                <br />
+    <a href='http://maths.cz/redaktor/jakub-vojacek.html'>Jakub Vojáček</a>       <br />
     
     
     

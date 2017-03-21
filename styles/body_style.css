@@ -795,7 +795,7 @@ a.obsah:hover{
   }
   .kod { /* Zv�razn�n� v�po�et */
     overflow: auto;  padding: 1em; border-color: #9f9f9f; font-size: 0.9em; border-style: dotted; border-width: 1px;background: #ffffff;
-    color: #000000;margin-left: 1%;margin-right: 1%; width: 800;
+    color: #000000;margin-left: 1%;margin-right: 1%; width: 100%;
     font-family: Verdana, "Geneva CE", lucida, sans-serif;
   }
 
@@ -913,9 +913,13 @@ ul{
 
 
 
-/*
+
 @media (max-width: 991px){
 	#zarovnani {
+		width: 100%;
+	}
+
+	div#footer {
 		width: 100%;
 	}
 
@@ -934,6 +938,10 @@ ul{
 	#hlavni_header{
 		display: none;
 	}
-	*/
+
+	.lista{
+		display: none;
+	}
+	
 }
 

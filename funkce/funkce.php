@@ -117,6 +117,7 @@ function vrat_obrazek($re){
 
 function vrat_math($re){
     
+    //return '`' . $re[1] . '`';
     $adresa = $re[1];
     //x^2
     $adresa2 = "\gammacorrection{1}\dpi{150}\parstyle\begin{align*}".$adresa."\end{align*}";
