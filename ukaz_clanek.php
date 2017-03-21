@@ -44,18 +44,18 @@ if (IsSet($_GET["id"])){
         mysqli_query(DATABASE::getDb(), "update clanky set pocet_precteni = pocet_precteni + 1 where id = '$id_clanku'");
     ukaz_clanek($pole);
     ?>
-    <div style = 'width: 100%; min-height: 100px; '>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- responzive reklama -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4559192509320286"
-     data-ad-slot="9167077653"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
+                        <div style = 'width: 100%; min-height: 100px; '>
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- responzive reklama -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-4559192509320286"
+                         data-ad-slot="9167077653"
+                         data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    </div>
     <?php
   
     $testy = $pole["testy"];
@@ -78,16 +78,17 @@ if (IsSet($_GET["id"])){
  
     
 
-
-             <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmaths.cz<?php echo urlencode($_SERVER["REQUEST_URI"]);?>&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px; margin-top: 30px;" allowTransparency="true"></iframe>
+            <div class="fb-like" data-href="http%3A%2F%2Fmaths.cz<?php echo urlencode($_SERVER["REQUEST_URI"]);?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+           
              <div style = "text-align: left; ">
             <g:plusone size="medium"></g:plusone>
                                                </div>
             <div class='textcl'><?php echo Znacky($pole["text_clanku"]); ?></div>
 
-    <br style="clear: both;" />
-    
-    <br style="clear: both;" />
+    <br style="clear: both;" /><br /><br />
+    Líbil se Vám článek? Dejte o něm ostatním vědět prostřednictvním facebooku! Třeba tím pomůžete i Vašim přátelům.<br />
+       <div class="fb-like" data-href="http%3A%2F%2Fmaths.cz<?php echo urlencode($_SERVER["REQUEST_URI"]);?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    <br style="clear: both;" /><br /><br />
 
     <?php
     nahodna_otazka();
