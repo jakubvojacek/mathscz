@@ -308,7 +308,7 @@ abstract class Funkce{
             <input class ="formbutton" type="submit" value ="Další otázka" />
             <a class ="formbutton" href="index.php?akce=vysledky">Ukončit test</a>
         </div>
-        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmaths.cz%2Ftesty%2Findex.php%3Fkategorie%3D<?php echo $_GET["kat"];?>&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px; margin-top: 30px;" allowTransparency="true"></iframe>
+        
 
         <?php
         }
