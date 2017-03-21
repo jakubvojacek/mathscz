@@ -174,7 +174,7 @@
     <form action="index.php" method = "get">                              
         <span class="searchtext">vyhledávání:                                                                              
         <input type="hidden" name="akce" value = "vyhledavani" />                                
-        <input type="text" name="q" size="28" class="searchbox" />                                
+        <input placeholder="Napiště co hledáte" type="text" name="q" size="28" class="searchbox" />                                
         <input type="submit" value="Hledat" class="searchsubmit" />                          
                                                  
         </span>   
@@ -190,6 +190,24 @@
     
     </div>
     
+</div>
+
+<div id = "header2" style = "text-align: center; background-color: #a8d1ea; ">
+<a href="index.php"><img src="images/logo.gif" alt="Matematika pro každého" /></a>
+<br style = "clear: both;" />
+<ul style = "width: 100%; display: block; margin: 0; padding: 0;">
+        <li style = "width: 100%; display: block; border: 1px solid black; "><a style = "width: 100%; display: block;" href="index.php">hlavní strana</a></li>                        
+        <li style = "width: 100%; display: block; border: 1px solid black; "><a style = "width: 100%; display: block;" href="/testy">testy</a></li>
+        <li style = "width: 100%; display: block; border: 1px solid black; "><a style = "width: 100%; display: block;" href="akce/hlavolamy">hlavolamy</a></li>
+        <li><form action="index.php" method = "get">                              
+        <input type="hidden" name="akce" value = "vyhledavani" />                                
+        <input style = "background: white;" placeholder="Napiště co hledáte" type="text" name="q"  />                                
+        <input type="submit" value="Hledat" style = "background: grey;" />                          
+                                                 
+        </span>   
+    </form></li>
+</ul>
+<br />
 </div>
     
 <?php 

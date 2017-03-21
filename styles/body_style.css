@@ -546,7 +546,7 @@ a.obsah:hover{
   }
   
   div#zarovnani {
-    width: 850px;
+    width: 95%;
 	text-align: justify;
 	margin: 0px auto;
   }
@@ -912,13 +912,14 @@ ul{
 
 
 
+@media (min-width: 992px){
+	div#header2 {
+		display: none;
+	}
+}
 
 
 @media (max-width: 991px){
-	#zarovnani {
-		width: 100%;
-	}
-
 	div#footer {
 		width: 100%;
 	}
@@ -928,7 +929,11 @@ ul{
 	}
 
 	div#header {
-		width: 100%;
+		display: none;
+	}
+
+	div#header2 {
+		display: block;
 	}
 
 	div#page {
