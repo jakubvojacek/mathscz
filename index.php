@@ -173,9 +173,6 @@
 
  
 <div id="container">                     
-    <span style="float: right; ">
-        <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-    </span>
     <div id="header">
     <a href="index.php"><img src="images/logo.gif" class="logo" alt="Matematika pro každého" /></a>                         
     <div id="navigation">                               
@@ -234,7 +231,7 @@ if (IsSet($_GET["akce"]) or IsSet($_GET["stranka"])){
     <?php             
     }
 else{
-    $zobrazit_reklamu = 0;
+    $zobrazit_reklamu = 1;
     ?>    
     <img id = 'hlavni_header' src='images/navtype_main.gif' class='' alt='' /><br />    
     <div id='page'>    
