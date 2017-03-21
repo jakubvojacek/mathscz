@@ -8,6 +8,14 @@ include("./funkce.php");
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cz" lang="cz">     
   <head> 
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4559192509320286",
+    enable_page_level_ads: true
+  });
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
   <meta name="description" content="Testy z matematiky, logiky, programování a práva." />
   <meta name="author" content="Jakub Vojáček" />
@@ -91,15 +99,11 @@ class Index extends Funkce{
                 </div>
             </div>
             <div id="footer" class="clear">
-                <p class="left">&copy; 2007-2011 Matematika pro každého.
-                    &nbsp; &nbsp;
-                        <script src="http://c1.navrcholu.cz/code?site=130443;t=b14" type="text/javascript"></script><noscript><div><a href="http://navrcholu.cz/"><img src="http://c1.navrcholu.cz/hit?site=130443;t=b14;ref=;jss=0" width="14" height="14" alt="NAVRCHOLU.cz" style="border:none" /></a></div></noscript>                <br />
+                <p class="left">&copy; 2007-<?php Date('Y'); ?> Matematika pro každého.
+                                  <br />
 
                 </p>
-                <p class="right">Design by
-                    <a href="http://www.spyka.net">Free CSS Templates</a> and
-                    <a href="http://www.justfreetemplates.com">Free Web Templates</a>
-                </p>
+               
             </div>
         </div><?php
         }
