@@ -308,7 +308,20 @@ else{
     }
     
 if ($zobrazit_reklamu == 1){
-    echo reklama;
+    ?>
+<div style = 'width: 100%; min-height: 100px; '>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- responzive reklama -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4559192509320286"
+     data-ad-slot="9167077653"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+    <?php
 
     }
     ?>                  
