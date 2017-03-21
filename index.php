@@ -255,7 +255,7 @@ else{
                                  LEFT JOIN kategorie ON clanky.kategorie = kategorie.id
                                  WHERE clanky.dokoncen = 'ano'
                                  group by clanky.datum 
-                                 order by clanky.datum desc limit 2
+                                 order by rand() desc limit 2
                                  ") or die(mysql_error());
     ukaz($vypis);
     ?>    
@@ -293,7 +293,7 @@ else{
                                  LEFT JOIN kategorie ON clanky.kategorie = kategorie.id
                                  WHERE clanky.dokoncen = 'ano'
                                  group by clanky.datum                                  
-                                 order by clanky.datum desc limit 2, 8
+                                 order rand() desc limit 2, 8
                                  ") or die(mysql_error());
     ukaz($vypis);
     ?>   
