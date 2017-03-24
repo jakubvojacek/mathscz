@@ -9,6 +9,7 @@ function je_prihlasen_kontrola_admin(){
             echo "tady hje pes";
             return 0;
             }
+        $vypis = mysqli_fetch_array($vypis);
         if ($vypis["typ"] == 2){
             echo "tady hje 3pes";
             return 0;
