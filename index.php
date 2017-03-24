@@ -162,7 +162,6 @@
 </script>
     </head>         
     <body>
-        `\ce{X2O}`
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
