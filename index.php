@@ -13,16 +13,18 @@
     enable_page_level_ads: true
   });
 </script>
-<script n:syntax="off" type="text/x-mathjax-config">
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
         extensions: ["[Contrib]/mhchem/mhchem.js"],
         tex2jax: {inlineMath: [["`","`"]]},
         showMathMenu: false,
     });
   </script>
-<script type="text/javascript" async
+
+  <script type="text/javascript" async
           src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <meta http-equiv="Content-language" content="cs" /> 
